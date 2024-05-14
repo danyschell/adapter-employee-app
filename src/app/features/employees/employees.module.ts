@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-
+import { AppRoutingModule } from '../../app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -25,7 +23,9 @@ import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core'
 import { MatNativeDateModule } from '@angular/material/core';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { EmployeeModule } from './features/employees/employees.module';
+
+import { EmpAddEditComponent } from './components/emp-add-edit/emp-add-edit.component';
+import { EmpListComponent } from './components/emp-list/emp-list.component';
 
 export const MY_FORMATS = {
   parse: {
@@ -40,9 +40,7 @@ export const MY_FORMATS = {
 };
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [EmpAddEditComponent, EmpListComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -62,8 +60,7 @@ export const MY_FORMATS = {
     MatPaginatorModule,
     MatSortModule,
     MatSnackBarModule,
-    MatNativeDateModule,
-    EmployeeModule,
+    MatNativeDateModule
   ],
   providers: [
     MatDatepickerModule,  
@@ -72,6 +69,6 @@ export const MY_FORMATS = {
     {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
     provideAnimationsAsync(),
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [EmpAddEditComponent, EmpListComponent],
 })
-export class AppModule {}
+export class EmployeeModule {}
